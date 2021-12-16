@@ -78,7 +78,7 @@ $user = $userObj->showUser('1');
             <h6 class="dropdown-header">
               Alerts Center
             </h6>
-            <?php include("notifications/notifications.note.php"); ?>
+            <?php include("notifications/alerts.note.php"); ?>
           </div>
         </li>
 
