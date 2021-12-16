@@ -1,5 +1,5 @@
 <?php
-
+// !Rename to projects class
 class WorkView extends Work
 {
 
@@ -8,6 +8,13 @@ class WorkView extends Work
 
     // Pull information from work class with project information for user_id
     $row = $this->viewProjects($uid);
+    return $row;
+  }
+
+
+  public function totalProjects($uid)
+  {
+    $row = $this->userProjectsTotal($uid);
     return $row;
   }
 }

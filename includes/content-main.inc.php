@@ -1,3 +1,13 @@
+<?php
+
+//!rename this to project instead of Work
+$projObj = new WorkView();
+$totalProjects = $projObj->totalProjects('1');
+
+
+?>
+
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -11,7 +21,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                 Open Tickets</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{open_tickets}</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-bug fa-2x text-gray-300"></i>
@@ -27,7 +37,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                 Closed Tickets</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{closed_tickets}</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-bug fa-2x text-gray-300"></i>
@@ -43,7 +53,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                 Open Projects</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalProjects; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -52,6 +62,7 @@
         </div>
       </div>
     </div>
+    <!-- Invoice Card -->
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
@@ -59,7 +70,7 @@
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                 Invoices Due</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo md5("password"); ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-receipt fa-2x text-gray-300"></i>
@@ -68,6 +79,8 @@
         </div>
       </div>
     </div>
+    <!-- End of Invoice Card  -->
+
   </div>
   <!-- Work flow -->
   <?php include("tasks/workflow.task.php"); ?>

@@ -1,6 +1,6 @@
 <?php
 
-
+//!Rename to ProjectsContr
 class Work extends Dbh
 {
 
@@ -8,7 +8,7 @@ class Work extends Dbh
   {
 
     //ToDo: Add order by due_date desc 
-    $sql = "SELECT * FROM projects WHERE user_id= ?";
+    $sql = "SELECT * FROM projects WHERE user_id= ? AND complete=0";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$uid]);
 
@@ -18,5 +18,15 @@ class Work extends Dbh
       $row = $stmt->fetchAll();
     }
     return $row;
+  }
+
+  protected function userProjectsTotal($uid)
+  {
+
+    $sql = "SELECT * FROM projects WHERE user_id = ? AND complete=0";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$uid]);
+
+    return $stmt->rowCount();
   }
 }
