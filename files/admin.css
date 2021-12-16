@@ -10970,7 +10970,6 @@ a:focus {
     display: inline;
   }
 
-
   .sidebar .sidebar-brand .sidebar-brand-icon i {
     font-size: 2rem;
   }
@@ -11236,7 +11235,6 @@ a:focus {
 .card .card-header[data-toggle='collapse'].collapsed {
   border-radius: 0.35rem;
 }
-
 
 .chart-area {
   position: relative;
