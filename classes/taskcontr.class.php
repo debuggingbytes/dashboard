@@ -8,9 +8,9 @@
  * http://www.debuggingbytes.com
  */
 
+
 class taskContr extends Tasks
 {
-
 
   public function viewActivity($uid)
   {
