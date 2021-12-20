@@ -1,8 +1,25 @@
 <?php
 
+// User Class
 $userObj = new UserView();
 
 $user = $userObj->showUser('1');
+
+// Alerts Class
+$alertObj = new AlertView();
+$note = $alertObj->viewSome('1');
+$tasks = $alertObj->alerts('1');
+
+//Messages Class
+$messageObj = new MessageView();
+$alerts = $messageObj->alerts('1');
+$count = 0;
+foreach ($alerts as $alert) {
+  if ($alert['is_read']) {
+    $count++;
+  }
+}
+
 // ToDo : Create Database structure for workload with keys to link users to work load
 
 // ToDo: Create Database for activity feed
@@ -71,7 +88,13 @@ $user = $userObj->showUser('1');
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
             <!-- Counter - Alerts -->
-            <span class="badge badge-danger badge-counter">0</span>
+            <?php
+            if ($count > 0) {
+            ?>
+              <span class="badge badge-danger badge-counter"><?php echo $count; ?></span>
+            <?php
+            }
+            ?>
           </a>
           <!-- Dropdown - Alerts -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
@@ -87,7 +110,9 @@ $user = $userObj->showUser('1');
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
             <!-- Counter - Messages -->
-            <span class="badge badge-danger badge-counter">0</span>
+            <?php if ($tasks > 0) {
+              echo '<span class="badge badge-danger badge-counter">' . $tasks . '</span>';
+            } ?>
           </a>
           <!-- Dropdown - Messages -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">

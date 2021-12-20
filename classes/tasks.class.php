@@ -17,7 +17,7 @@ class Tasks extends Dbh
   protected function activity($uid)
   {
     // Pull information from activity feed where user_id matches
-    $sql = "SELECT * FROM activity_feed WHERE user_id= ?";
+    $sql = "SELECT u.username, af.id, af.crud_action, af.details, af.time, af.id FROM db_cms_feed af INNER JOIN db_cms_users u ON af.user_id = u.id WHERE af.user_id= ?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$uid]);
 

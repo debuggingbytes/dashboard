@@ -8,4 +8,10 @@ class AlertView extends AlertContr
     $alert = $this->viewAlerts($uid);
     return $alert;
   }
+
+  public function alerts($uid)
+  {
+    $alert = $this->notifications($uid);
+    return $alert;
+  }
 }

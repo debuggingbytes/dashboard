@@ -8,4 +8,10 @@ class MessageView extends MessageContr
     $messages = $this->viewMessages($uid);
     return $messages;
   }
+
+  public function alerts($uid)
+  {
+    $alerts = $this->notifications($uid);
+    return $alerts;
+  }
 }

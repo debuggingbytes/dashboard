@@ -40,7 +40,7 @@ $activity = $taskObj->viewActivity('1');
     ?>
       <div class='row d-flex activity-feed'>
         <div class='col-md-1 spacer'>
-          <?php echo $task['user_id']; ?>
+          <?php echo $task['username']; ?>
         </div>
         <div class="col-md-1 spacer">
           <?php echo $crud; ?>

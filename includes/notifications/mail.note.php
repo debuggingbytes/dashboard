@@ -3,7 +3,6 @@
 
 //ToDo uses keys to identify from user to display name
 
-$messageObj = new MessageView();
 $message = $messageObj->viewSome('1');
 
 foreach ($message as $note) {
@@ -17,7 +16,7 @@ foreach ($message as $note) {
     </div>
     <div class="font-weight-bold">
       <div class="text-truncate"><?php echo $note['message']; ?></div>
-      <div class="small text-gray-500"><?php echo $note['from_id']; ?> · <?php echo $time; ?></div>
+      <div class="small text-gray-500"><?php echo $note['username']; ?> · <?php echo $time; ?></div>
     </div>
   </a>
 <?php

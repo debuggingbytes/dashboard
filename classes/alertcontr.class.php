@@ -16,4 +16,14 @@ class AlertContr extends Dbh
     }
     return $row;
   }
+
+  protected function notifications($uid)
+  {
+    $sql = "SELECT is_read from db_cms_alerts WHERE user_id = ? AND is_read = 0";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$uid]);
+
+    $total = $stmt->rowCount();
+    return $total;
+  }
 }
