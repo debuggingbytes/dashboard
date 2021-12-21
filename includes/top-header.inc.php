@@ -7,18 +7,12 @@ $user = $userObj->showUser('1');
 
 // Alerts Class
 $alertObj = new AlertView();
-$note = $alertObj->viewSome('1');
-$tasks = $alertObj->alerts('1');
+$alerts = $alertObj->alerts('1');
 
 //Messages Class
 $messageObj = new MessageView();
-$alerts = $messageObj->alerts('1');
-$count = 0;
-foreach ($alerts as $alert) {
-  if ($alert['is_read']) {
-    $count++;
-  }
-}
+
+
 
 // ToDo : Create Database structure for workload with keys to link users to work load
 
@@ -85,42 +79,14 @@ foreach ($alerts as $alert) {
 
         <!-- Nav Item - Alerts -->
         <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell fa-fw"></i>
-            <!-- Counter - Alerts -->
-            <?php
-            if ($count > 0) {
-            ?>
-              <span class="badge badge-danger badge-counter"><?php echo $count; ?></span>
-            <?php
-            }
-            ?>
-          </a>
-          <!-- Dropdown - Alerts -->
-          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header">
-              Alerts Center
-            </h6>
-            <?php include("notifications/alerts.note.php"); ?>
+          <div id="alerts">
+
           </div>
         </li>
 
         <!-- Nav Item - Messages -->
         <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-envelope fa-fw"></i>
-            <!-- Counter - Messages -->
-            <?php if ($tasks > 0) {
-              echo '<span class="badge badge-danger badge-counter">' . $tasks . '</span>';
-            } ?>
-          </a>
-          <!-- Dropdown - Messages -->
-          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">
-              Message Center
-            </h6>
-            <?php include("notifications/mail.note.php"); ?>
-          </div>
+          <div id="messages"></div>
         </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>

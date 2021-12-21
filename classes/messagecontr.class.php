@@ -22,10 +22,10 @@ class MessageContr extends Dbh
 
   protected function notifications($uid)
   {
-    $sql = "SELECT is_read FROM db_cms_messages WHERE user_id= ?";
+    $sql = "SELECT is_read FROM db_cms_messages WHERE user_id= ? AND is_read = 0";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$uid]);
 
-    return $stmt->fetchAll();
+    return $stmt->rowCount();
   }
 }

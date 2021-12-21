@@ -4,7 +4,7 @@ class AlertContr extends Dbh
 {
   protected function viewAlerts($uid)
   {
-    $sql = "SELECT * FROM db_cms_alerts WHERE user_id= ?";
+    $sql = "SELECT * FROM db_cms_alerts WHERE user_id= ? ORDER BY id DESC";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$uid]);
 
@@ -19,7 +19,7 @@ class AlertContr extends Dbh
 
   protected function notifications($uid)
   {
-    $sql = "SELECT is_read from db_cms_alerts WHERE user_id = ? AND is_read = 0";
+    $sql = "SELECT is_read from db_cms_alerts WHERE user_id = ? AND is_read != 1";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$uid]);
 

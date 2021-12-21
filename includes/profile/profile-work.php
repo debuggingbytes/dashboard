@@ -2,24 +2,12 @@
 
 
 //ToDo: Remove hard coded user_id, have pulled based off sessions when login system is complete
+$projObj = new WorkView();
 $projects = $projObj->projectView('1');
 
 ?>
 
-<div class="card shadow mb-4">
-  <div class="card-header py-3">
-    <div class='row d-flex'>
-      <div class='col-md-8'>
-        <strong>Project Details</strong>
-      </div>
-      <div class="col-md">
-        <strong> Submitted Date</strong>
-      </div>
-      <div class="col-md text-center">
-        <strong> Due Date</strong>
-      </div>
-    </div>
-  </div>
+<div class="card shadow p-4">
   <div class="card-body">
     <?php
     foreach ($projects as $project) {
@@ -32,8 +20,8 @@ $projects = $projObj->projectView('1');
     ?>
       <div class='row d-flex activity-feed'>
         <div class='col-md-8 text-justify text-wrap text-break'>
-          <i class="fas fa-project-diagram mx-1"></i>
-          <?php echo $project['details']; ?>
+          <a href='?s=work&id=<?php echo $project['id']; ?>'><i class="far fa-eye"></i></a>
+          <?php echo substr($project['details'], 0, 70) . "..."; ?>
         </div>
         <div class="col-md">
           <?php echo $project['time']; ?>

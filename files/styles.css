@@ -3,6 +3,17 @@
   display: flex;
   border-bottom: 1px solid #000;
   margin-bottom: 15px;
-  /* align-items: center;
-  justify-content: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.profileImg {
+  bottom: 0;
+  left: 0;
+}
+@media screen and (max-width: 400px) {
+  .profileImg {
+    bottom: 0;
+    left: 0;
+  }
 }

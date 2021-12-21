@@ -11,7 +11,7 @@ $activity = $taskObj->viewActivity('1');
   </div>
   <div class="card-body">
     <div class='row d-flex activity-feed'>
-      <div class='col-md-1'>
+      <div class='col-md-2'>
         <strong>Username</strong>
       </div>
       <div class="col-md-1">
@@ -39,7 +39,7 @@ $activity = $taskObj->viewActivity('1');
 
     ?>
       <div class='row d-flex activity-feed'>
-        <div class='col-md-1 spacer'>
+        <div class='col-md-2 spacer'>
           <?php echo $task['username']; ?>
         </div>
         <div class="col-md-1 spacer">
@@ -56,7 +56,7 @@ $activity = $taskObj->viewActivity('1');
     }
     ?>
     <div class='row d-flex activity-feed'>
-      <div class='col-md-1'>
+      <div class='col-md-2'>
         <strong>Username</strong>
       </div>
       <div class="col-md-1">
