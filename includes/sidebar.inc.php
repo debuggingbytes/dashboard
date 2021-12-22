@@ -2,10 +2,10 @@
 $page = $_SERVER['PHP_SELF'];
 $currentPage = explode('/', $page);
 
-switch ($currentPage[2]) {
+switch ($currentPage) {
   case "profile.php":
     $profileShow = "show";
-    $profileActive = "active";
+    $profileActive = "";
     break;
   default:
     $profileShow = "";

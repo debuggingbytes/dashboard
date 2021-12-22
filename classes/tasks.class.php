@@ -30,4 +30,22 @@ class Tasks extends Dbh
     // return value back to task controller
     return $row;
   }
+
+
+  protected function delTask($tid)
+  {
+    $sql = "DROP FROM projects WHERE id= ? LIMIT 1";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$tid]);
+
+    return "<span class='text-danger'>Project Deleted.</span>";
+  }
+  protected function finishTask($tid)
+  {
+    $sql = "UPDATE projects SET complete='1' WHERE id= ? LIMIT 1";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$tid]);
+
+    return "<span class='text-success'>Project marked as completed.</span>";
+  }
 }

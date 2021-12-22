@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/Edmonton');
 include("../../classes/dbh.class.php");
 include("../functions.inc.php");
 include("../../classes/alertcontr.class.php");

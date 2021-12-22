@@ -16,3 +16,12 @@ setInterval(function () {
   $("#alerts").load("./includes/notifications/alerts.note.php");
   $("#messages").load("./includes/notifications/mail.note.php");
 }, 600000);
+
+
+function completeTask(tid, uid, task) {
+  $('#message').load("./includes/tasks/complete.task.php?project_id=" + tid + "&user_id=" + uid + "&task=" + task);
+  setTimeout(() => {
+    $(location).attr('href', 'profile.php?s=work')
+  }, 3000);
+
+}

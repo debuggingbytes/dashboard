@@ -29,4 +29,15 @@ class Work extends Dbh
 
     return $stmt->rowCount();
   }
+
+  // Pull information for single project
+  protected function project($pid)
+  {
+    $sql = "SELECT * FROM projects WHERE id = ?";
+    $stmt = $this->connect()->prepare($sql);
+
+    $stmt->execute([$pid]);
+
+    return $stmt->fetch();
+  }
 }

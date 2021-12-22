@@ -17,4 +17,11 @@ class WorkView extends Work
     $row = $this->userProjectsTotal($uid);
     return $row;
   }
+
+
+  public function viewProject($pid)
+  {
+
+    return $this->project($pid);
+  }
 }

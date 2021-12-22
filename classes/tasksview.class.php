@@ -9,7 +9,7 @@
  */
 
 
-class taskContr extends Tasks
+class TasksView extends Tasks
 {
 
   public function viewActivity($uid)

@@ -1,6 +1,6 @@
 <?php
 
-$taskObj = new taskContr();
+$taskObj = new TasksView();
 
 $activity = $taskObj->viewActivity('1');
 
@@ -29,13 +29,7 @@ $activity = $taskObj->viewActivity('1');
     //Pull from database activities that matches user and show them in card
     foreach ($activity as $task) {
 
-      if ($task['crud_action'] == "add") {
-        $crud = '<i class="text-success far fa-plus-square"></i>';
-      } elseif ($task['crud_action'] == "delete") {
-        $crud = '<i class="text-danger far fa-trash-alt"></i>';
-      } elseif ($task['crud_action'] == "update") {
-        $crud = '<i class="text-info far fa-edit"></i>';
-      }
+
 
     ?>
       <div class='row d-flex activity-feed'>
@@ -43,7 +37,7 @@ $activity = $taskObj->viewActivity('1');
           <?php echo $task['username']; ?>
         </div>
         <div class="col-md-1 spacer">
-          <?php echo $crud; ?>
+          <?php echo $task['crud_action']; ?>
         </div>
         <div class="col-md text-center spacer">
           <?php echo $task['details']; ?>
