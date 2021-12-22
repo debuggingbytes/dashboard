@@ -27,26 +27,30 @@ $activity = $taskObj->viewActivity('1');
     <?php
 
     //Pull from database activities that matches user and show them in card
-    foreach ($activity as $task) {
+    if (is_array($activity)) {
+      foreach ($activity as $task) {
 
 
 
     ?>
-      <div class='row d-flex activity-feed'>
-        <div class='col-md-2 spacer'>
-          <?php echo $task['username']; ?>
+        <div class='row d-flex activity-feed'>
+          <div class='col-md-2 spacer'>
+            <?php echo $task['username']; ?>
+          </div>
+          <div class="col-md-1 spacer">
+            <?php echo $task['crud_action']; ?>
+          </div>
+          <div class="col-md text-center spacer">
+            <?php echo $task['details']; ?>
+          </div>
+          <div class="col-md-2 spacer text-right">
+            <?php echo timeChange($task['time']); ?>
+          </div>
         </div>
-        <div class="col-md-1 spacer">
-          <?php echo $task['crud_action']; ?>
-        </div>
-        <div class="col-md text-center spacer">
-          <?php echo $task['details']; ?>
-        </div>
-        <div class="col-md-2 spacer text-right">
-          <?php echo timeChange($task['time']); ?>
-        </div>
-      </div>
     <?php
+      }
+    } else {
+      print "<div class='text-center p-5'><span class=' text-danger'>No current activity found</span></div>";
     }
     ?>
     <div class='row d-flex activity-feed'>
