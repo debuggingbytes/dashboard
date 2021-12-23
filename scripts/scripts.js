@@ -18,10 +18,25 @@ setInterval(function () {
 }, 600000);
 
 
+
+
+
+
+
+// function for task completion
 function completeTask(tid, uid, task) {
-  $('#message').load("./includes/tasks/complete.task.php?project_id=" + tid + "&user_id=" + uid + "&task=" + task);
+  $('#message').load("./includes/tasks/complete.task.php?project_id=" + tid + "&user_id=" + uid + "&task=" + task + "&tasktype=task");
   setTimeout(() => {
     $(location).attr('href', 'profile.php?s=work')
+  }, 3000);
+
+}
+
+// Function for ticket completion
+function completeTicket(tid, uid, task) {
+  $('#message').load("./includes/tasks/complete.task.php?ticket_id=" + tid + "&user_id=" + uid + "&task=" + task + "&tasktype=ticket");
+  setTimeout(() => {
+    $(location).attr('href', 'profile.php?s=tickets')
   }, 3000);
 
 }

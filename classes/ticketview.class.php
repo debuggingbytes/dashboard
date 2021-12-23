@@ -3,7 +3,7 @@
 // Ticket view controller
 // Created December 21, 2021
 
-class TicketView extends TicketContr
+class TicketView extends Tickets
 {
 
   // Pull Tickets based off UID
@@ -19,5 +19,12 @@ class TicketView extends TicketContr
 
     $totalTickets = $this->totalTickets($uid);
     return $totalTickets;
+  }
+
+  public function viewTicket($tid)
+  {
+
+    $ticket = $this->ticket($tid);
+    return $ticket;
   }
 }

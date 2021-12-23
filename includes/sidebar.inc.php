@@ -50,27 +50,30 @@ switch ($currentPage) {
     </div>
   </li>
   <!-- Divider -->
-  <hr class="sidebar-divider">
+
+  <!-- <hr class="sidebar-divider">
   <li class="nav-item">
     <a class="nav-link" href="index.html">
       <i class="fas fa-fw fa-users"></i>
       <span>Clients</span></a>
-  </li>
+  </li> -->
   <!-- Divider -->
-  <hr class="sidebar-divider">
+
+  <!-- <hr class="sidebar-divider">
   <li class="nav-item">
     <a class="nav-link" href="index.html">
       <i class="fas fa-fw fa-receipt"></i>
       <span>Tickets</span></a>
-  </li>
+  </li> -->
+
   <!-- Divider -->
-  <hr class="sidebar-divider">
+  <!-- <hr class="sidebar-divider"> -->
   <!-- Heading -->
-  <div class="sidebar-heading">
+  <!-- <div class="sidebar-heading">
     Projects
-  </div>
+  </div> -->
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo">
       <i class="fas fa-file-invoice-dollar"></i>
       <span>Billing</span>
@@ -81,9 +84,9 @@ switch ($currentPage) {
         <a class="collapse-item" href="cards.html">Invoicing</a>
       </div>
     </div>
-  </li>
+  </li> -->
   <!-- Nav Item - Utilities Collapse Menu -->
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
       <span>Utilities</span>
@@ -97,7 +100,7 @@ switch ($currentPage) {
         <a class="collapse-item" href="utilities-other.html">Other</a>
       </div>
     </div>
-  </li>
+  </li> -->
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
   <!-- Sidebar Toggler (Sidebar) -->

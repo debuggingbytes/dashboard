@@ -4,10 +4,10 @@ class MessageContr extends Dbh
 {
   protected function viewMessages($uid)
   {
-    $sql = "SELECT af.id, af.from_id, af.message, af.sent_time, u.username 
-    FROM db_cms_messages af 
+    $sql = "SELECT m.id, m.from_id, m.message, m.sent_time, u.username 
+    FROM db_cms_messages m 
     INNER JOIN db_cms_users u 
-    ON af.from_id = u.id WHERE af.user_id= ?";
+    ON m.from_id = u.id WHERE m.user_id= ?";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([$uid]);
 

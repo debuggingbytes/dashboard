@@ -40,6 +40,7 @@ class Tasks extends Dbh
 
     return "<span class='text-danger'>Project Deleted.</span>";
   }
+
   protected function finishTask($tid)
   {
     $sql = "UPDATE projects SET complete='1' WHERE id= ? LIMIT 1";

@@ -1,36 +1,16 @@
 <?php
 
-class TicketContr extends Dbh
+class TicketContr extends Tickets
 {
 
-
-  protected function pullAllTickets()
-  {
-  }
-
-  protected function pullTickets($uid)
+  public function markComplete($tid)
   {
 
-    // Start SQL query to pull tickets based off UID
-    $sql = "SELECT * FROM db_cms_tickets WHERE user_id = ? AND complete = 0";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$uid]);
-
-    if ($stmt->rowCount() == 0) {
-      $msg = "No current tickets open";
+    $result = $this->completeTicket($tid);
+    if ($result) {
+      return true;
     } else {
-      $msg = $stmt->fetchAll();
+      return false;
     }
-
-    return $msg;
-  }
-
-  protected function totalTickets($uid)
-  {
-    $sql = "SELECT * FROM db_cms_tickets WHERE user_id = ? AND complete = 0";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$uid]);
-
-    return $stmt->rowCount();
   }
 }

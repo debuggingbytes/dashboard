@@ -12,7 +12,9 @@ include("../../classes/alertview.class.php");
 
 
 $alertObj = new AlertView();
+// Pulls all alerts
 $note = $alertObj->viewSome('1');
+//Alerts show total alerts in notification window
 $alerts = $alertObj->alerts('1');
 
 ?>
