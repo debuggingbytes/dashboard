@@ -28,4 +28,24 @@ class MessageContr extends Dbh
 
     return $stmt->rowCount();
   }
+
+  // View Message Method
+  protected function viewMessage($mid)
+  {
+    $sql = "SELECT m.id, m.from_id, m.message, m.sent_time, u.username 
+    FROM db_cms_messages m 
+    INNER JOIN db_cms_users u 
+    ON m.from_id = u.id WHERE m.user_id= ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$mid]);
+
+    return $stmt->fetch();
+  }
+
+  protected function messageIsRead($mid)
+  {
+    $sql = "UPDATE db_cms_messages SET is_read=1 WHERE id= ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$mid]);
+  }
 }

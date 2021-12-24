@@ -1,18 +1,18 @@
 <?php
 
-class AlertView extends AlertContr
+class AlertView extends Alert
 {
 
   // View All Alerts
-  public function viewSome($uid)
+  public function viewSome($uid, $selector)
   {
-    $alert = $this->viewAlerts($uid);
+    $alert = $this->viewAlerts($uid, $selector);
     return $alert;
   }
   //View Single Alert
   public function viewAlert($aid)
   {
-    $result = $this->alert($aid);
+    $result = $this->showAlert($aid);
     return $result;
   }
 
@@ -23,7 +23,6 @@ class AlertView extends AlertContr
     if (empty($alert)) {
       return false;
     } else {
-
       return $alert;
     }
   }

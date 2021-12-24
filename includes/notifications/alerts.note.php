@@ -2,7 +2,7 @@
 date_default_timezone_set('America/Edmonton');
 include("../../classes/dbh.class.php");
 include("../functions.inc.php");
-include("../../classes/alertcontr.class.php");
+include("../../classes/alert.class.php");
 include("../../classes/alertview.class.php");
 
 
@@ -13,7 +13,7 @@ include("../../classes/alertview.class.php");
 
 $alertObj = new AlertView();
 // Pulls all alerts
-$note = $alertObj->viewSome('1');
+$note = $alertObj->viewSome('1', "");
 //Alerts show total alerts in notification window
 $alerts = $alertObj->alerts('1');
 
@@ -43,7 +43,7 @@ $alerts = $alertObj->alerts('1');
       $readStatus = $alert['is_read'] ? 'small text-gray-500' : 'font-weight-bold';
 
   ?>
-      <a class="dropdown-item d-flex align-items-center" href="#">
+      <a class="dropdown-item d-flex align-items-center" href="profile.php?s=alerts&alert_id=<?php echo $alert['id']; ?>">
         <div class="mr-3">
           <div class="icon-circle bg-primary">
             <i class="fas fa-project-diagram"></i>
@@ -61,5 +61,5 @@ $alerts = $alertObj->alerts('1');
   }
   ?>
 
-  <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+  <a class="dropdown-item text-center small text-gray-500" href="profile.php?s=alerts">Show All Alerts</a>
 </div>

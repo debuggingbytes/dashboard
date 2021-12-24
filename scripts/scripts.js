@@ -15,7 +15,7 @@ $(document).ready(function () {
 setInterval(function () {
   $("#alerts").load("./includes/notifications/alerts.note.php");
   $("#messages").load("./includes/notifications/mail.note.php");
-}, 600000);
+}, 60000);
 
 
 
@@ -40,3 +40,58 @@ function completeTicket(tid, uid, task) {
   }, 3000);
 
 }
+
+//Alert & Mail Functions
+
+function markReadAlert() {
+  $('#message').load("");
+
+}
+function markUnreadAlert() {
+  $('#message').load("");
+
+}
+function deleteAlert() {
+  $('#message').load("");
+  setTimeout(() => {
+    $(location).attr('href', '')
+  }, 3000);
+}
+
+function markReadMail() {
+  $('#message').load("");
+
+}
+function markUnreadMail() {
+  $('#message').load("");
+
+}
+function deleteMail() {
+  $('#message').load("");
+  setTimeout(() => {
+    $(location).attr('href', '')
+  }, 3000);
+}
+
+// onChange functions for mail / alerts
+
+$('.alert-control').change(function () {
+  const select = $('.alert-control').find(":selected").val();
+  // console.log(select)
+  switch (select) {
+    case '1':
+      $("#alert-side").load("./includes/notifications/alerts.view.php?selector=1");
+      break;
+    case '2':
+      $("#alert-side").load("./includes/notifications/alerts.view.php?selector=2");
+      break;
+    default:
+      $("#alert-side").load("./includes/notifications/alerts.view.php?selector=0");
+      break;
+  }
+  $("#alert-side").html("<span class='red'>Hello <b>Again</b></span>");
+})
+$('.mail-control').change(function () {
+  const select = $('.mail-control').find(":selected").val();
+  console.log(select)
+})

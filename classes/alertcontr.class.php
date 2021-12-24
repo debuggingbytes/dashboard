@@ -1,53 +1,37 @@
 <?php
+// Class controller for Alerts
 
-class AlertContr extends Dbh
+class AlertContr extends Alert
 {
-  protected function viewAlerts($uid)
+
+  public function markRead($aid)
   {
-    $sql = "SELECT * FROM db_cms_alerts WHERE user_id= ? AND is_read=0 ORDER BY id DESC";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$uid]);
+    $result = $this->read($aid);
 
-
-    if ($stmt->rowCount() == 0) {
-      $row = "No notifications to show";
+    if ($result) {
+      return true;
     } else {
-      $row = $stmt->fetchAll();
-    }
-    return $row;
-  }
-
-  // View Single Ticket methods
-  protected function alert($aid)
-  {
-
-    $sql = "SELECT a.id, a.from_id, a.note, a.is_read, a.time, a.user_id, u.id, u.username 
-    FROM db_cms_alerts a 
-    INNER JOIN db_cms_users u 
-    ON a.from_id = u.id
-    WHERE a.id= ? ";
-
-    $stmt = $this->connect()->prepare($sql);
-
-    try {
-      $stmt->execute([$aid]);
-    } catch (\Exception $e) {
-      print $e;
       return false;
-    } finally {
-      return $stmt->fetch();
     }
   }
-
-
-
-  protected function notifications($uid)
+  public function markunRead($aid)
   {
-    $sql = "SELECT is_read from db_cms_alerts WHERE user_id = ? AND is_read = 0";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$uid]);
+    $result = $this->unRead($aid);
 
-    $total = $stmt->rowCount();
-    return $total;
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public function deleteAlert($aid)
+  {
+    $result = $this->delAlert($aid);
+
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

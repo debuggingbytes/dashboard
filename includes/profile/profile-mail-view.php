@@ -1,18 +1,19 @@
 <?php
-$tid = (int) filter_input(INPUT_GET, 'alert_id', FILTER_VALIDATE_INT, ['options' => ['default' => -1]]);
+$tid = (int) filter_input(INPUT_GET, 'mail_id', FILTER_VALIDATE_INT, ['options' => ['default' => -1]]);
 
-$alertContr = new AlertContr();
-$alertContr->markRead($tid);
+//ToDo:  Complete functionality of Read/Unread/Delete buttons  w/ jQuery support
+
 
 if (empty($tid)) {
   echo "Invalid Alert ID";
 } else {
-  $alertObj = new AlertView();
+  $mailObj = new MessageView();
+  $mail = $mailObj->message($tid);
 
-  $alert = $alertObj->viewAlert($tid);
+  $mailObj->isRead($tid);
 
   // print "<pre>";
-  // print_r($alert);
+  // print_r($mail);
   // print "</pre>";
 
 ?>
@@ -24,7 +25,7 @@ if (empty($tid)) {
           Sent:
         </div>
         <div class="col-md p-0 m-0">
-          <?php echo timeChange($alert['time']); ?>
+          <?php echo timeChange($mail['sent_time']); ?>
         </div>
       </div>
       <div class="row d-flex border-bottom-info pb-4">
@@ -32,7 +33,7 @@ if (empty($tid)) {
           By:
         </div>
         <div class="col-md p-0 m-0">
-          <?php echo $alert['username']; ?>
+          <?php echo $mail['username']; ?>
         </div>
       </div>
       <div class="row">
@@ -42,15 +43,15 @@ if (empty($tid)) {
       </div>
       <div class="row">
         <div class="col-md p-2 m-2">
-          <?php echo $alert['note']; ?>
+          <?php echo $mail['message']; ?>
         </div>
       </div>
     </div>
     <div class='row d-flex activity-feed pl-5 pr-5 pt-1'>
       <div class="col-md">
-        <button class='btn btn-success' title="Mark as Read" name="complete" value="<?php echo $alert[0]; ?>"><i class="fas fa-envelope-open"></i></button>
-        <button class='btn btn-warning' title="Mark as Unread" name="edit" value="<?php echo $alert[0]; ?>"><i class="fas fa-envelope"></i></button>
-        <button class='btn btn-danger' title="Delete" name='del' value="<?php echo $alert[0]; ?>"><i class="fas fa-times"></i></button>
+        <button class='btn btn-success' title="Mark as Read" name="complete" value="<?php echo $mail[0]; ?>"><i class="fas fa-envelope-open"></i></button>
+        <button class='btn btn-warning' title="Mark as Unread" name="edit" value="<?php echo $mail[0]; ?>"><i class="fas fa-envelope"></i></button>
+        <button class='btn btn-danger' title="Delete" name='del' value="<?php echo $mail[0]; ?>"><i class="fas fa-times"></i></button>
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@
 
 // Alert Classes
 $alertObj = new AlertView();
-$alerts = $alertObj->viewSome('1');
+$alerts = $alertObj->viewSome('1', "");
 // Mail Classes
 $mailObj = new MessageView();
 $mails = $mailObj->viewSome('1');
@@ -15,16 +15,30 @@ $mails = $mailObj->viewSome('1');
 // ToDo - Card FontAwesome Icon to be based off of alert type, dynamic per alert
 ?>
 <div class="row d-flex px-4 pt-3">
-  <div class="col-md">
+  <div class="col-md form-group">
     <h4>Alerts</h4>
+    <form class='alert-control' method='get' action>
+      <select class='form-control' name='alerts'>
+        <option value='0'>Show All</option>
+        <option value='1'>Show Unread</option>
+        <option value='2'>Show Read</option>
+      </select>
+    </form>
   </div>
-  <div class="col-md">
+  <div class="col-md form-group">
     <h4>Mail</h4>
+    <form class='mail-control' method='get' action>
+      <select class=' form-control' name='alerts'>
+        <option value='0'>Show All</option>
+        <option value='1'>Show Unread</option>
+        <option value='2'>Show Read</option>
+      </select>
+    </form>
   </div>
 </div>
 <div class="row d-flex px-4 py-2">
   <!-- Alerts Side -->
-  <div class="col-md">
+  <div class="col-md" id='alert-side'>
     <?php
 
     if (is_array($alerts)) {

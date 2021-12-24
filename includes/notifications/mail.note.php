@@ -31,7 +31,7 @@ $mails = $messageObj->alerts('1');
       $time = timeChange($note['sent_time']);
   ?>
 
-      <a class="dropdown-item d-flex align-items-center" href="#">
+      <a class="dropdown-item d-flex align-items-center" href="profile.php?s=alerts&mail_id=<?php echo $note['id']; ?>">
         <div class="dropdown-list-image mr-3">
           <img class="rounded-circle" src="./files/images/undraw_profile_1.svg" alt="...">
           <div class="status-indicator bg-success"></div>
@@ -47,5 +47,5 @@ $mails = $messageObj->alerts('1');
     echo "<div class='text-center p-3'>" . $message . "</div>";
   }
   ?>
-  <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+  <a class="dropdown-item text-center small text-gray-500" href="profile.php?s=alerts">Read More Messages</a>
 </div>

@@ -1,17 +1,41 @@
 <?php
-$page = $_SERVER['PHP_SELF'];
-$currentPage = explode('/', $page);
 
-switch ($currentPage) {
-  case "profile.php":
-    $profileShow = "show";
+$workflow = filter_input(INPUT_GET, 's', FILTER_SANITIZE_SPECIAL_CHARS, ['options' => ['default' => "Profile"]]);
+//if its mobile, don't autoshow sidebar expanded
+if (isMobile()) {
+  $profileShow = "";
+} else {
+  $profileShow = "show ";
+}
+switch ($workflow) {
+  case 'work':
     $profileActive = "";
+    $workActive = "active";
+    $ticketsActive = "";
+    $alertsActive = "";
+    break;
+  case 'alerts':
+    $profileActive = "";
+    $workActive = "";
+    $ticketsActive = "";
+    $alertsActive = "active";
+    break;
+  case 'tickets':
+    $profileActive = "";
+    $workActive = "";
+    $ticketsActive = "active";
+    $alertsActive = "";
     break;
   default:
-    $profileShow = "";
-    $profileActive = "";
+    $profileActive = "active";
+    $workActive = "";
+    $ticketsActive = "";
+    $alertsActive = "";
     break;
 }
+
+
+
 
 ?>
 
@@ -43,9 +67,9 @@ switch ($currentPage) {
     <div id="collapseProfile" class="collapse <?php echo $profileShow; ?>" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item <?php echo $profileActive; ?>" href="profile.php">Profile</a>
-        <a class="collapse-item" href="profile.php?s=work">Work Flow</a>
-        <a class="collapse-item" href="profile.php?s=tickets">Tickets</a>
-        <a class="collapse-item" href="profile.php?s=alerts">Alerts &amp; Mail</a>
+        <a class="collapse-item <?php echo $workActive; ?>" href="profile.php?s=work">Work Flow</a>
+        <a class="collapse-item <?php echo $ticketsActive; ?>" href="profile.php?s=tickets">Tickets</a>
+        <a class="collapse-item <?php echo $alertsActive; ?>" href="profile.php?s=alerts">Alerts &amp; Mail</a>
       </div>
     </div>
   </li>
