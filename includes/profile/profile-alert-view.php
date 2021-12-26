@@ -48,9 +48,9 @@ if (empty($tid)) {
     </div>
     <div class='row d-flex activity-feed pl-5 pr-5 pt-1'>
       <div class="col-md">
-        <button class='btn btn-success' title="Mark as Read" name="complete" value="<?php echo $alert[0]; ?>"><i class="fas fa-envelope-open"></i></button>
-        <button class='btn btn-warning' title="Mark as Unread" name="edit" value="<?php echo $alert[0]; ?>"><i class="fas fa-envelope"></i></button>
-        <button class='btn btn-danger' title="Delete" name='del' value="<?php echo $alert[0]; ?>"><i class="fas fa-times"></i></button>
+        <button onClick="markReadAlert(<?php echo $tid ?>)" class='btn btn-success' title="Mark as Read" name="complete" value="<?php echo $alert[0]; ?>"><i class="fas fa-envelope-open"></i></button>
+        <button onClick="markUnreadAlert(<?php echo $tid ?>)" class='btn btn-warning' title="Mark as Unread" name="edit" value="<?php echo $alert[0]; ?>"><i class="fas fa-envelope"></i></button>
+        <button onClick="deleteAlert(<?php echo $tid ?>)" class='btn btn-danger' title="Delete" name='del' value="<?php echo $alert[0]; ?>"><i class="fas fa-times"></i></button>
       </div>
     </div>
   </div>

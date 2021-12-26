@@ -1,51 +1,22 @@
 <?php
 
-class MessageContr extends Dbh
+class MessageContr extends Message
 {
-  protected function viewMessages($uid)
+  public function markRead($mid)
   {
-    $sql = "SELECT m.id, m.from_id, m.message, m.sent_time, u.username 
-    FROM db_cms_messages m 
-    INNER JOIN db_cms_users u 
-    ON m.from_id = u.id WHERE m.user_id= ?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$uid]);
-
-
-    if ($stmt->rowCount() == 0) {
-      $row = "No Mail Available";
-    } else {
-      $row = $stmt->fetchAll();
-    }
-    return $row;
+    $result = $this->messageIsRead($mid);
+    return $result;
   }
 
-  protected function notifications($uid)
+  public function markUnread($mid)
   {
-    $sql = "SELECT is_read FROM db_cms_messages WHERE user_id= ? AND is_read = 0";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$uid]);
-
-    return $stmt->rowCount();
+    $result = $this->messageIsUnread($mid);
+    return $result;
   }
 
-  // View Message Method
-  protected function viewMessage($mid)
+  public function deleteMail($mid)
   {
-    $sql = "SELECT m.id, m.from_id, m.message, m.sent_time, u.username 
-    FROM db_cms_messages m 
-    INNER JOIN db_cms_users u 
-    ON m.from_id = u.id WHERE m.user_id= ?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$mid]);
-
-    return $stmt->fetch();
-  }
-
-  protected function messageIsRead($mid)
-  {
-    $sql = "UPDATE db_cms_messages SET is_read=1 WHERE id= ?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$mid]);
+    $result = $this->messageIsDeleted($mid);
+    return $result;
   }
 }

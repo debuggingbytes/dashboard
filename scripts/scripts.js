@@ -43,33 +43,49 @@ function completeTicket(tid, uid, task) {
 
 //Alert & Mail Functions
 
-function markReadAlert() {
-  $('#message').load("");
-
-}
-function markUnreadAlert() {
-  $('#message').load("");
-
-}
-function deleteAlert() {
-  $('#message').load("");
+function markReadAlert(id) {
+  $('#message').load("./includes/notifications/handler.note.php?type=readAlert&alert_id=" + id);
   setTimeout(() => {
-    $(location).attr('href', '')
+    $('#message').fadeOut();
+  }, 1500);
+}
+function markUnreadAlert(id) {
+  $('#message').load("./includes/notifications/handler.note.php?type=unreadAlert&alert_id=" + id);
+  setTimeout(() => {
+    $('#message').fadeOut();
+  }, 1500);
+}
+function deleteAlert(id) {
+  $('#message').load("./includes/notifications/handler.note.php?type=deleteAlert&alert_id=" + id);
+  setTimeout(() => {
+    $('#message').fadeOut();
+  }, 1500);
+  setTimeout(() => {
+    $(location).attr('href', 'profile.php?s=alerts')
   }, 3000);
 }
 
-function markReadMail() {
-  $('#message').load("");
-
-}
-function markUnreadMail() {
-  $('#message').load("");
-
-}
-function deleteMail() {
-  $('#message').load("");
+function markReadMail(id) {
+  $('#message').load("./includes/notifications/handler.note.php?type=readMail&alert_id=" + id);
   setTimeout(() => {
-    $(location).attr('href', '')
+    $('#message').fadeOut();
+  }, 1500);
+
+}
+function markUnreadMail(id) {
+  $('#message').load("./includes/notifications/handler.note.php?type=unreadMail&alert_id=" + id);
+  setTimeout(() => {
+    $('#message').fadeOut();
+  }, 1500);
+
+}
+function deleteMail(id) {
+  $('#message').load("./includes/notifications/handler.note.php?type=deleteMail&alert_id=" + id);
+  setTimeout(() => {
+    $('#message').fadeOut();
+  }, 1500);
+  setTimeout(() => {
+    $(location).attr('href', 'profile.php?s=alerts')
   }, 3000);
 }
 
@@ -90,8 +106,20 @@ $('.alert-control').change(function () {
       break;
   }
   $("#alert-side").html("<span class='red'>Hello <b>Again</b></span>");
-})
+});
+
 $('.mail-control').change(function () {
   const select = $('.mail-control').find(":selected").val();
-  console.log(select)
+  switch (select) {
+    case '1':
+      $("#mail-side").load("./includes/notifications/messages.view.php?selector=1");
+      break;
+    case '2':
+      $("#mail-side").load("./includes/notifications/messages.view.php?selector=2");
+      break;
+    default:
+      $("#mail-side").load("./includes/notifications/messages.view.php?selector=0");
+      break;
+  }
+  // console.log(select)
 })

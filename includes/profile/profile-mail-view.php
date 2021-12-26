@@ -5,7 +5,7 @@ $tid = (int) filter_input(INPUT_GET, 'mail_id', FILTER_VALIDATE_INT, ['options' 
 
 
 if (empty($tid)) {
-  echo "Invalid Alert ID";
+  echo "Invalid mail ID";
 } else {
   $mailObj = new MessageView();
   $mail = $mailObj->message($tid);
@@ -49,9 +49,9 @@ if (empty($tid)) {
     </div>
     <div class='row d-flex activity-feed pl-5 pr-5 pt-1'>
       <div class="col-md">
-        <button class='btn btn-success' title="Mark as Read" name="complete" value="<?php echo $mail[0]; ?>"><i class="fas fa-envelope-open"></i></button>
-        <button class='btn btn-warning' title="Mark as Unread" name="edit" value="<?php echo $mail[0]; ?>"><i class="fas fa-envelope"></i></button>
-        <button class='btn btn-danger' title="Delete" name='del' value="<?php echo $mail[0]; ?>"><i class="fas fa-times"></i></button>
+        <button onClick="markReadMail(<?php echo $tid ?>)" class='btn btn-success' title="Mark as Read" name="complete" value="<?php echo $mail[0]; ?>"><i class="fas fa-envelope-open"></i></button>
+        <button onClick="markUnreadMail(<?php echo $tid ?>)" class='btn btn-warning' title="Mark as Unread" name="edit" value="<?php echo $mail[0]; ?>"><i class="fas fa-envelope"></i></button>
+        <button onClick="deleteMail(<?php echo $tid ?>)" class='btn btn-danger' title="Delete" name='del' value="<?php echo $mail[0]; ?>"><i class="fas fa-times"></i></button>
       </div>
     </div>
   </div>

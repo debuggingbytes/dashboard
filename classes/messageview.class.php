@@ -1,12 +1,12 @@
 <?php
 
-class MessageView extends MessageContr
+class MessageView extends Message
 {
 
   // View all messages
-  public function viewSome($uid)
+  public function viewSome($uid, $orderBy)
   {
-    $messages = $this->viewMessages($uid);
+    $messages = $this->viewMessages($uid, $orderBy);
     return $messages;
   }
 

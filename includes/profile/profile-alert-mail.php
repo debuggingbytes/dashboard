@@ -9,7 +9,7 @@ $alertObj = new AlertView();
 $alerts = $alertObj->viewSome('1', "");
 // Mail Classes
 $mailObj = new MessageView();
-$mails = $mailObj->viewSome('1');
+$mails = $mailObj->viewSome('1', "");
 
 
 // ToDo - Card FontAwesome Icon to be based off of alert type, dynamic per alert
@@ -75,7 +75,7 @@ $mails = $mailObj->viewSome('1');
   </div>
   <!-- End Alerts -->
   <!-- Start Mail -->
-  <div class="col-md">
+  <div class="col-md" id="mail-side">
     <?php
 
     if (is_array($mails)) {
