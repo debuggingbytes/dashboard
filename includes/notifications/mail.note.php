@@ -34,6 +34,8 @@ $mails = $messageObj->alerts($_SESSION['uid']);
   if (is_array($message)) {
     foreach ($message as $note) {
       $time = timeChange($note['sent_time']);
+      $readStatus = $note['is_read'] ? 'small text-gray-500' : 'font-weight-bold';
+
   ?>
 
       <a class="dropdown-item d-flex align-items-center" href="profile.php?s=alerts&mail_id=<?php echo $note['id']; ?>">
@@ -42,8 +44,8 @@ $mails = $messageObj->alerts($_SESSION['uid']);
           <div class="status-indicator bg-success"></div>
         </div>
         <div class="font-weight-bold">
-          <div class="text-truncate"><?php echo $note['message']; ?></div>
-          <div class="small text-gray-500"><?php echo $note['username']; ?> · <?php echo $time; ?></div>
+          <div class="text-truncate <?php echo $readStatus; ?>"><?php echo $note['message']; ?></div>
+          <div class="<?php echo $readStatus; ?>"><?php echo $note['username']; ?> · <?php echo $time; ?></div>
         </div>
       </a>
   <?php

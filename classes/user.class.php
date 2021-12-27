@@ -24,7 +24,7 @@ class User extends Dbh
 
     if ($stmt->rowCount() == 0) {
       $stmt = null;
-      #	header("location: ");
+      header("location: ");
       exit();
     }
     $row = $stmt->fetchAll();

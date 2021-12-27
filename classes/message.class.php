@@ -4,7 +4,7 @@ class Message extends Dbh
 {
   protected function viewMessages($uid, $orderBy)
   {
-    $sql = "SELECT m.id, m.from_id, m.message, m.sent_time, u.username 
+    $sql = "SELECT m.id,m.is_read, m.from_id, m.message, m.sent_time, u.username 
     FROM db_cms_messages m 
     INNER JOIN db_cms_users u 
     ON m.from_id = u.id WHERE m.user_id= ? $orderBy";

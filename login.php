@@ -19,21 +19,18 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="./files/login.css">
   </head>
 
-  <body>
+  <body class='bg-gradient-info'>
     <main>
       <section>
-        <div class="row d-flex vh100">
-          <div class="col-md bg-gradient-info">
-            LEFT
-          </div>
-          <div class="col-md position-relative justify-content-center align-items-center d-flex">
-            <div class="login-box col-md">
+        <div class="container p-2">
+          <div class="row justify-content-center align-items-center d-flex vh100">
+            <div class="col-md login-box text-center shadow-lg">
+              <img src="http://www.debuggingbytes.com/files/images/db-full-logo.png" alt="DebuggingBytes admin dashboard login" class="img-fluid w-50 py-3 mb-5">
               <div class="card-header bg-info text-white text-fw-500 text-center">Login Required</div>
               <div class="card-body shadow-lg" id="loginbox">
                 <?php echo $error; ?>
                 <form method="POST" action="./includes/login.inc.php">
                   <div class="mb-1 form-floating">
-
                     <input type='text' class='form-control' name='userid' placeholder='Username/Email'>
                     <label for="user">Username:</label>
                   </div>
@@ -51,7 +48,6 @@ if (isset($_SESSION['username'])) {
         </div>
       </section>
     </main>
-
   </body>
 
   </html>
