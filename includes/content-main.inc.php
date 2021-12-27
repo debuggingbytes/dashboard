@@ -2,7 +2,7 @@
 
 //!rename this to project instead of Work
 $projObj = new WorkView();
-$totalProjects = $projObj->totalProjects('1');
+$totalProjects = $projObj->totalProjects($_SESSION['uid']);
 // Tickets class
 $ticketObj = new TicketView();
 
@@ -43,7 +43,7 @@ $ticketObj = new TicketView();
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                   Open Tickets</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $ticketObj->viewTotal('1'); ?></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $ticketObj->viewTotal($_SESSION['uid']); ?></div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-bug fa-2x text-gray-300"></i>

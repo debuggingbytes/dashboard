@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION['uid'])) {
+  session_start();
+}
+
 include("../../classes/dbh.class.php");
 include("../functions.inc.php");
 include("../../classes/message.class.php");
@@ -9,8 +13,8 @@ include("../../classes/messageview.class.php");
 
 //ToDo uses keys to identify from user to display name
 $messageObj = new MessageView();
-$message = $messageObj->viewSome('1', "");
-$mails = $messageObj->alerts('1');
+$message = $messageObj->viewSome($_SESSION['uid'], "");
+$mails = $messageObj->alerts($_SESSION['uid']);
 ?>
 <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   <i class="fas fa-envelope fa-fw"></i>

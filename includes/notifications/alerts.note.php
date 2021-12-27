@@ -1,4 +1,5 @@
 <?php
+session_start();
 date_default_timezone_set('America/Edmonton');
 include("../../classes/dbh.class.php");
 include("../functions.inc.php");
@@ -13,9 +14,9 @@ include("../../classes/alertview.class.php");
 
 $alertObj = new AlertView();
 // Pulls all alerts
-$note = $alertObj->viewSome('1', "");
+$note = $alertObj->viewSome($_SESSION['uid'], "");
 //Alerts show total alerts in notification window
-$alerts = $alertObj->alerts('1');
+$alerts = $alertObj->alerts($_SESSION['uid']);
 
 ?>
 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

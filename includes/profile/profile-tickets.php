@@ -4,7 +4,7 @@
 // Load Classes
 $ticketObj = new TicketView();
 
-$tickets = $ticketObj->viewTickets('1');
+$tickets = $ticketObj->viewTickets($_SESSION['uid']);
 ?>
 <div class='row p-3'>
   <?php
@@ -44,6 +44,8 @@ $tickets = $ticketObj->viewTickets('1');
 
   <?php
     }
+  } else {
+    echo '<div class="text-center p-5 mx-auto">' . $tickets . '</div>';
   }
 
   ?>

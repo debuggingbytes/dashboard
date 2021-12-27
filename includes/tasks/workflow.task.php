@@ -2,7 +2,7 @@
 
 
 //ToDo: Remove hard coded user_id, have pulled based off sessions when login system is complete
-$projects = $projObj->projectView('1');
+$projects = $projObj->projectView($_SESSION['uid']);
 
 ?>
 

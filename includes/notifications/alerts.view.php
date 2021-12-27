@@ -1,4 +1,5 @@
 <?php
+session_start();
 date_default_timezone_set('America/Edmonton');
 //Classes for ajax loading
 include "../../classes/dbh.class.php";
@@ -22,7 +23,7 @@ switch ($selector) {
 }
 
 $alertObj = new AlertView();
-$alerts = $alertObj->viewSome('1', $orderBy);
+$alerts = $alertObj->viewSome($_SESSION['uid'], $orderBy);
 
 if (is_array($alerts)) {
   foreach ($alerts as $alert) {

@@ -2,7 +2,7 @@
 
 $taskObj = new TasksView();
 
-$activity = $taskObj->viewActivity('1');
+$activity = $taskObj->viewActivity($_SESSION['uid']);
 
 ?>
 <div class="card shadow mb-4">

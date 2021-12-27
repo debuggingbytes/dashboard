@@ -3,11 +3,11 @@
 // User Class
 $userObj = new UserView();
 
-$user = $userObj->showUser('1');
+$user = $userObj->showUser($_SESSION['uid']);
 
 // Alerts Class
 $alertObj = new AlertView();
-$alerts = $alertObj->alerts('1');
+$alerts = $alertObj->alerts($_SESSION['uid']);
 
 //Messages Class
 $messageObj = new MessageView();

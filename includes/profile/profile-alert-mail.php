@@ -6,10 +6,10 @@
 
 // Alert Classes
 $alertObj = new AlertView();
-$alerts = $alertObj->viewSome('1', "");
+$alerts = $alertObj->viewSome($_SESSION['uid'], "");
 // Mail Classes
 $mailObj = new MessageView();
-$mails = $mailObj->viewSome('1', "");
+$mails = $mailObj->viewSome($_SESSION['uid'], "");
 
 
 // ToDo - Card FontAwesome Icon to be based off of alert type, dynamic per alert
